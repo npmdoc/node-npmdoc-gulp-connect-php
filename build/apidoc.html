@@ -1,0 +1,212 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/micahblu/gulp-connect-php#readme"
+
+    >gulp-connect-php (v0.0.8)</a>
+</h1>
+<h4>Starts a php server</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-connect-php">module gulp-connect-php</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-connect-php.closeServer">
+            function <span class="apidocSignatureSpan">gulp-connect-php.</span>closeServer
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-connect-php.server">
+            function <span class="apidocSignatureSpan">gulp-connect-php.</span>server
+            <span class="apidocSignatureSpan">(options, cb)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-connect-php" id="apidoc.module.gulp-connect-php">module gulp-connect-php</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-connect-php.closeServer" id="apidoc.element.gulp-connect-php.closeServer">
+        function <span class="apidocSignatureSpan">gulp-connect-php.</span>closeServer
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">closeServer = function (cb) {
+		var child = exec(&#x27;lsof -i :&#x27; + workingPort,
+		  function (error, stdout, stderr) {
+		    //console.log(&#x27;stdout: &#x27; + stdout);
+		    //console.log(&#x27;stderr: &#x27; + stderr);
+		    if (error !== null) {
+		      console.log(&#x27;exec error: &#x27; + error);
+		    }
+
+		    // get pid then kill it
+		    var pid = stdout.match(/php\s+?([0-9]+)/)[1];
+		    if (pid) {
+		    	exec(&#x27;kill &#x27; + pid, function (error, stdout, stderr) {
+		    		//console.log(&#x27;stdout: &#x27; + stdout);
+		   			//console.log(&#x27;stderr: &#x27; + stderr);
+		    		cb();
+		    	});
+		    } else {
+		    	cb({error: &#x22;couldn&#x27;t find process id and kill it&#x22;});
+		    }
+		});
+	}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-connect-php.server" id="apidoc.element.gulp-connect-php.server">
+        function <span class="apidocSignatureSpan">gulp-connect-php.</span>server
+        <span class="apidocSignatureSpan">(options, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">server = function (options, cb){
+		if (!cb) {
+			cb = function(){};
+		}
+
+		options = extend({
+			port: 8000,
+			hostname: &#x27;127.0.0.1&#x27;,
+			base: &#x27;.&#x27;,
+			open: false,
+			bin: &#x27;php&#x27;,
+			root: &#x27;/&#x27;,
+			stdio: &#x27;inherit&#x27;
+		}, options);
+
+		workingPort = options.port;
+		var host = options.hostname + &#x27;:&#x27; + options.port;
+		var args = [&#x27;-S&#x27;, host, &#x27;-t&#x27;, options.base];
+
+		if (options.ini) {
+			args.push(&#x27;-c&#x27;, options.ini);
+		}
+
+		if (options.router) {
+			args.push(require(&#x27;path&#x27;).resolve(options.router));
+		}
+
+		binVersionCheck(options.bin, &#x27;&#x3e;=5.4&#x27;, function (err) {
+			if (err) {
+				cb();
+				return;
+			}
+			var checkPath = function(){
+			    var exists = fs.existsSync(options.base);
+			    if (exists === true) {
+			        spawn(options.bin, args, {
+						cwd: &#x27;.&#x27;,
+						stdio: options.stdio
+					});
+			    }
+			    else{
+				setTimeout(checkPath, 100);
+			    }
+			};
+			checkPath();
+			// check when the server is ready. tried doing it by listening
+			// to the child process `data` event, but it&#x27;s not triggered...
+			checkServer(options.hostname, options.port, function () {
+				if (options.open) {
+					open(&#x27;http://&#x27; + host + options.root);
+				}
+				cb();
+			}.bind(this));
+		}.bind(this));
+	}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Usage
+
+```js
+var gulp = require(&#x27;gulp&#x27;),
+    connect = require(&#x27;gulp-connect-php&#x27;);
+
+gulp.task(&#x27;connect&#x27;, function() {
+	connect.<span class="apidocCodeKeywordSpan">server</span>();
+});
+
+gulp.task(&#x27;default&#x27;, [&#x27;connect&#x27;]);
+```
+
+## Examples
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
