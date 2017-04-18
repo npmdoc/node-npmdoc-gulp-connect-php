@@ -1,4 +1,6 @@
-# api documentation for  [gulp-connect-php (v0.0.8)](https://github.com/micahblu/gulp-connect-php#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-connect-php.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-connect-php) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-connect-php.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-connect-php)
+# npmdoc-gulp-connect-php
+
+api documentation for  [gulp-connect-php (v0.0.8)](https://github.com/micahblu/gulp-connect-php#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-connect-php.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-connect-php) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-connect-php.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-connect-php)
 #### Starts a php server
 
 [![NPM](https://nodei.co/npm/gulp-connect-php.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/gulp-connect-php)
