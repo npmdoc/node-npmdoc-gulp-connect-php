@@ -4,7 +4,7 @@
 <tspan x="10" y="26">2 megabytes installed</tspan>
 <tspan x="10" y="42"></tspan>
 <tspan x="10" y="58">node_modules</tspan>
-<tspan x="10" y="74">└─┬ gulp-connect-php@0.0.8 </tspan>
+<tspan x="10" y="74">└─┬ gulp-connect-php@1.0.0 </tspan>
 <tspan x="10" y="90">  ├─┬ bin-version-check@2.1.0 </tspan>
 <tspan x="10" y="106">  │ ├─┬ bin-version@1.0.4 </tspan>
 <tspan x="10" y="122">  │ │ └─┬ find-versions@1.2.1 </tspan>
@@ -19,7 +19,7 @@
 <tspan x="10" y="266">  │ │   │ │ │ └── array-find-index@1.0.2 </tspan>
 <tspan x="10" y="282">  │ │   │ │ └── signal-exit@3.0.2 </tspan>
 <tspan x="10" y="298">  │ │   │ ├── map-obj@1.0.1 </tspan>
-<tspan x="10" y="314">  │ │   │ ├─┬ normalize-package-data@2.3.6 </tspan>
+<tspan x="10" y="314">  │ │   │ ├─┬ normalize-package-data@2.3.8 </tspan>
 <tspan x="10" y="330">  │ │   │ │ ├── hosted-git-info@2.4.2 </tspan>
 <tspan x="10" y="346">  │ │   │ │ ├─┬ is-builtin-module@1.0.0 </tspan>
 <tspan x="10" y="362">  │ │   │ │ │ └── builtin-modules@1.1.1 </tspan>
