@@ -1,6 +1,7 @@
 # npmdoc-gulp-connect-php
 
-api documentation for  [gulp-connect-php (v0.0.8)](https://github.com/micahblu/gulp-connect-php#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-connect-php.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-connect-php) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-connect-php.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-connect-php)
+#### basic api documentation for  [gulp-connect-php (v1.0.0)](https://github.com/micahblu/gulp-connect-php#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-connect-php.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-connect-php) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-connect-php.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-connect-php)
+
 #### Starts a php server
 
 [![NPM](https://nodei.co/npm/gulp-connect-php.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/gulp-connect-php)
@@ -37,10 +38,10 @@ api documentation for  [gulp-connect-php (v0.0.8)](https://github.com/micahblu/g
     },
     "directories": {},
     "dist": {
-        "shasum": "b8532f84488e0f215e3debd8ed288475636c6aae",
-        "tarball": "https://registry.npmjs.org/gulp-connect-php/-/gulp-connect-php-0.0.8.tgz"
+        "shasum": "00a4dbe8ee825eb3bca46f5bb11606175c2e12f3",
+        "tarball": "https://registry.npmjs.org/gulp-connect-php/-/gulp-connect-php-1.0.0.tgz"
     },
-    "gitHead": "15a0f6519c1accdda66cf8d268ab7f4d25e41fc4",
+    "gitHead": "6106703a008c8daa24cf07cb16b31b9c128ff8f3",
     "homepage": "https://github.com/micahblu/gulp-connect-php#readme",
     "keywords": [
         "gulp",
@@ -62,9 +63,10 @@ api documentation for  [gulp-connect-php (v0.0.8)](https://github.com/micahblu/g
         "url": "git+https://github.com/micahblu/gulp-connect-php.git"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "mocha ./test"
     },
-    "version": "0.0.8"
+    "version": "1.0.0",
+    "bin": {}
 }
 ```
 
